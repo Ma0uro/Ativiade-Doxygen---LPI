@@ -94,6 +94,8 @@ struct DadosTurma aluno;
           printf("A quantidade de faltas excede a carga horária\n");
           return 1; 
       }
+    
+    aluno.media = 0.0;
 
       for (int i = 0; i < aluno.creditos; i++) {
           printf("Digite a nota do crédito %dº:\n ", i + 1);
