@@ -2,15 +2,25 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief Estrutura que armazena dados de uma turma.
+ */
 
 struct DadosTurma {
-float notas[10];
-float media;
-int creditos;
-int faltas;
-const char *turma[19];
+float notas[10];    /**< Notas dos créditos. */
+float media;      /**< Média das notas. */
+int creditos;    /**< Quantidade de créditos. */
+int faltas;      /**< Quantidade de faltas. */
+const char *turma[19]; /**< Lista de alunos da turma. */
 };
 
+/**
+ * @brief Arredonda um número para a precisão especificada.
+ * 
+ * @param num Número a ser arredondado.
+ * @param precisao Número de casas decimais.
+ * @return float Número arredondado.
+ */
 
 float arredondamento(float num, int precisao) {
     int multiplicador = 1;
@@ -32,12 +42,19 @@ void exibirNota(int credito, float nota) {
   printf("Nota %d: %.2f\n", credito, nota);
 }
 
+/**
+ * @brief Função principal do programa.
+ * 
+ * @return int Código de retorno do programa.
+ */
+
 int main() {
 
 float frequencia = 0;  
   
 struct DadosTurma aluno;
- 
+
+// Lista de nomes dos alunos    
   aluno.turma[0] = "Adrielle dos Santos Silva";
   aluno.turma[1] = "Alex Amaral dos Santos";
   aluno.turma[2] = "Andre Nascimento Pardinho";
@@ -62,6 +79,7 @@ struct DadosTurma aluno;
 
   while (continuar) {
       printf("--------------- DADOS DA TURMA ---------------\n");
+      // Exibe a lista de alunos
       for (int i = 0; i < 19; i++) {
           printf("Discente: %d: %s\n", i+1, aluno.turma[i]); 
       }
@@ -104,11 +122,14 @@ struct DadosTurma aluno;
           aluno.media += aluno.notas[i];
       }
 
+      // Calcula a média normal do aluno e depois faz o arredondamento
       aluno.media = aluno.media / aluno.creditos;
       float media_a =  arredondamento(aluno.media, 1);
 
-      float frequencia = (Carga_Horaria - aluno.faltas) * 100.0 / Carga_Horaria;
+      // Calcula a frequência do aluno
+      float frequencia = (Carga_Horaria - aluno.faltas) * 100.0 / Carga_Horaria; 
 
+      // Exibe a ficha do discenete
       printf("------------ FICHA DO DISCENTE -------------\n");
       printf("Discente: %s\n", aluno.turma[escolha_aluno]);  
       printf("Faltas: %d\n", aluno.faltas);
